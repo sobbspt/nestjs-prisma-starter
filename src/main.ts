@@ -9,6 +9,7 @@ import type {
   NestConfig,
   SwaggerConfig,
 } from 'src/common/configs/config.interface';
+import helmet from 'helmet';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -23,6 +24,8 @@ async function bootstrap() {
   // Prisma Client Exception Filter for unhandled exceptions
   const { httpAdapter } = app.get(HttpAdapterHost);
   app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
+
+  app.use(helmet());
 
   const configService = app.get(ConfigService);
   const nestConfig = configService.get<NestConfig>('nest');
