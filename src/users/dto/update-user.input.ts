@@ -1,9 +1,9 @@
-import { InputType, Field } from '@nestjs/graphql';
+import { ApiProperty } from '@nestjs/swagger';
 
-@InputType()
 export class UpdateUserInput {
-  @Field({ nullable: true })
+  @ApiProperty({ description: 'Firstname', required: false })
   firstname?: string;
-  @Field({ nullable: true })
+
+  @ApiProperty({ description: 'Lastname', required: false })
   lastname?: string;
 }

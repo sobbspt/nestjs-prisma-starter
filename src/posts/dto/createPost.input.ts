@@ -1,13 +1,12 @@
 import { IsNotEmpty } from 'class-validator';
-import { InputType, Field } from '@nestjs/graphql';
+import { ApiProperty } from '@nestjs/swagger';
 
-@InputType()
 export class CreatePostInput {
-  @Field()
+  @ApiProperty({ description: 'Content of the post' })
   @IsNotEmpty()
   content: string;
 
-  @Field()
+  @ApiProperty({ description: 'Title of the post' })
   @IsNotEmpty()
   title: string;
 }

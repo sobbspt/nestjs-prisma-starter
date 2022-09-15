@@ -1,11 +1,9 @@
-import { ArgsType, Field } from '@nestjs/graphql';
 import { IsJWT, IsNotEmpty } from 'class-validator';
-import { GraphQLJWT } from 'graphql-scalars';
+import { ApiProperty } from '@nestjs/swagger';
 
-@ArgsType()
 export class RefreshTokenInput {
   @IsNotEmpty()
   @IsJWT()
-  @Field(() => GraphQLJWT)
+  @ApiProperty()
   token: string;
 }

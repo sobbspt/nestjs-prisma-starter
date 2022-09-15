@@ -1,8 +1,7 @@
-import { Field, InputType } from '@nestjs/graphql';
 import { OrderDirection } from './order-direction';
+import { ApiProperty } from '@nestjs/swagger';
 
-@InputType({ isAbstract: true })
 export abstract class Order {
-  @Field(() => OrderDirection)
+  @ApiProperty({ description: 'Order direction asc/desc' })
   direction: OrderDirection;
 }

@@ -1,5 +1,5 @@
-import { InputType, registerEnumType } from '@nestjs/graphql';
 import { Order } from 'src/common/order/order';
+import { ApiProperty } from '@nestjs/swagger';
 
 export enum PostOrderField {
   id = 'id',
@@ -10,12 +10,7 @@ export enum PostOrderField {
   content = 'content',
 }
 
-registerEnumType(PostOrderField, {
-  name: 'PostOrderField',
-  description: 'Properties by which post connections can be ordered.',
-});
-
-@InputType()
 export class PostOrder extends Order {
+  @ApiProperty({ description: 'Post sortable fields', enum: PostOrderField })
   field: PostOrderField;
 }
